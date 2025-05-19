@@ -1,10 +1,11 @@
 import "./App.css";
+import MainLayout from "./components/layout/MainLayout";
 
 function App() {
   return (
-    <>
-      <div className="text-5xl">this is app</div>
-    </>
+    <div className="">
+      <MainLayout />
+    </div>
   );
 }
 
