@@ -1,11 +1,16 @@
+import { useState } from "react";
 import "./App.css";
 import MainLayout from "./components/layout/MainLayout";
+import { MovieContext } from "./context";
 
 function App() {
+  const [carts, setCarts] = useState([]);
   return (
-    <div className="">
-      <MainLayout />
-    </div>
+    <>
+      <MovieContext.Provider value={{ carts, setCarts }}>
+        <MainLayout />
+      </MovieContext.Provider>
+    </>
   );
 }
 
