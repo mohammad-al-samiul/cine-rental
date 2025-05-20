@@ -1,15 +1,34 @@
 import Rating from "../../pages/movies/rating";
 import { getImageUrl } from "../../utils/movie-imageUrl";
 import tag from "../../assets/tag.svg";
+import MovieDetails from "../../pages/movies/movieDetails";
+import { useState } from "react";
 export default function MovieCard({ movie }) {
+  const [openModal, setOpenModal] = useState(false);
+  const [selectedMovie, setSelectedMovie] = useState(null);
+
+  const handleOpenModal = (movie) => {
+    setSelectedMovie(movie);
+    setOpenModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedMovie(null);
+    setOpenModal(false);
+  };
   return (
     <>
+      {openModal && (
+        <MovieDetails onClose={handleCloseModal} movie={selectedMovie} />
+      )}
       <figure className="p-4 border border-black/10 shadow-sm dark:border-white/10 rounded-xl">
-        <img
-          className="w-full object-cover"
-          src={getImageUrl(movie.cover)}
-          alt={movie.title}
-        />
+        <a href="#" onClick={() => handleOpenModal(movie)}>
+          <img
+            className="w-full object-cover"
+            src={getImageUrl(movie.cover)}
+            alt={movie.title}
+          />
+        </a>
         <figcaption className="pt-4">
           <h3 className="text-xl mb-1"> {movie.title}</h3>
           <p className="text-[#575A6E] text-sm mb-2">{movie.genre}</p>
