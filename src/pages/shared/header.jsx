@@ -9,7 +9,7 @@ import sun from "./../../assets/icons/sun.svg";
 
 export default function Header() {
   const [openCartModal, setOpenCartModal] = useState(false);
-  const { carts } = useContext(MovieContext);
+  const { state } = useContext(MovieContext);
   const { darkMode, setDarkMode } = useContext(ThemeContext);
 
   const handleCartOpenModal = () => {
@@ -54,7 +54,7 @@ export default function Header() {
             >
               <img src={cart} width="20" height="20" alt="" />
               <span className="rounded-full absolute top-[-12px] left-[28px] bg-[#12CF6F] text-white text-center p-[2px] w-[30px] h-[30px]">
-                {carts.length > 0 ? carts.length : "0"}
+                {state.carts.length > 0 ? state.carts.length : "0"}
               </span>
             </a>
           </li>
